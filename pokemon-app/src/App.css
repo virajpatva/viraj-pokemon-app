@@ -47,7 +47,6 @@
 
 .search-box{
   height: 30px;
-  margin : 10px;
   width: 700px;
 }
 
@@ -56,7 +55,57 @@
   height: 30px;
 }
 .search-bar{
-  margin: 10px;
   display: flex;
   justify-content: flex-end;
+  padding: 10px;
+}
+.search-bar .form {
+  display: flex;
+  flex-direction: row;
+  gap : 20px;
+  align-items: end;
+}
+.search-bar .searchButton {
+  height: 30px;
+  padding : 0px 10px;
+}
+
+.offset-btn{
+  /* height: 50px; */
+  padding: 12px;
+}
+
+.listing-page-btn{
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.image-details{
+  height: 200px;
+  width: 200px;
+}
+.abilitybox{
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  gap : 10px;
+}
+.ability{
+  background-color: bisque;
+  padding : 10px
+}
+li{
+  margin: 5px;
+}
+
+h1{
+  padding: 10px;
+  background: rgb(58,176,158);
+  color: white;
+}
+h2 {
+  background: whitesmoke;
+  color: black;
+  padding: 10px;
 }

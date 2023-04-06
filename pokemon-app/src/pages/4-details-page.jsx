@@ -1,52 +1,66 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { searchPokemonDetails } from '../Utility/API'
+function DetailsPage({ id }) {
+  const [details, setDetails] = useState((searchPokemonDetails({ id })));
+  useEffect((() => {
+    fetchDetails();
+  }), []);
+  useEffect(() => { console.log(details) }, [details]);
+  const fetchDetails = async () => {
+    const response = await searchPokemonDetails({ id });
+    setDetails(response)
+  }
+  function Header({ name }) {
+    return (
+      <>
+        <h1>Welcome to Pokemon Application {name}</h1>
+        <h2>Pokemon Details {name}</h2>
+      </>
+    )
+  }
+  function BackButton() {
+    return (
+      <>
+        <button type="submit">Back</button>
+      </>
+    )
+  }
+  function Pokemon() {
+    const ability = details.ability || [];
+    return (
+      <>
+        <div className='pokemon-details'>
+          <div className="image">
+            <img src={details.image_url} alt="" className='image-details' />
+          </div>
+          <div className="details">
+            <div className="basic-details">
+              <ul>
+                <li><strong>Name : </strong>{details.name}</li>
+                <li><strong>Height : </strong>{details.height}</li>
+                <li><strong>Weight : </strong>{details.weight}</li>
+                <li><strong>Base Experience : </strong>{details.base_experience}</li>
+                <li><strong>Order : </strong>{details.order}</li>
 
-function DetailsPage() {
+              </ul>
+              <div className="abilitybox">
+                {ability.map((ab) => (<div className='ability'>{ab.ability.name}</div>))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
   return (
     <>
-      <Header name='Pikachu' />
+      <Header />
       <BackButton />
-      <Pokemon name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-
-
+      <Pokemon details={details} />
     </>
   )
 }
-function Header({ name }) {
-  return (
-    <>
-      <h1>Welcome to Pokemon Application {name}</h1>
-      <h2>Pokemon Details {name}</h2>
-    </>
-  )
-}
-function BackButton() {
-  return (
-    <>
-      <button type="submit">Back</button>
-    </>
-  )
-}
-function Pokemon({ name, height, weight, ability, url }) {
-  return (
-    <div className='pokemon-details'>
-      <div className="image">
-        <img src={url} alt="" />
-      </div>
-      <div className="details">
-        <div className="basic-details">
-          <p>Name : {name}</p>
-          <p>Height : {height}</p>
-          <p>Weight : {weight}</p>
-        </div>
-        <div className="ability">
-          <p>ability: {ability}</p>
-        </div>
 
-      </div>
-
-    </div>
-  );
-}
 export default DetailsPage;
