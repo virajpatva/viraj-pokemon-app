@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       <Header />
-      <ListingPage id={1} />
+      <DetailsPage id={1} />
     </div>
   )
 }
