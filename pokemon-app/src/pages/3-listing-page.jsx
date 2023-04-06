@@ -1,29 +1,90 @@
 import { useState, useRef, useEffect } from 'react'
 import React from 'react'
-import searchPokemons from '../Utility/API';
+import searchPokemons, { searchPokemon } from '../Utility/API';
 function ListingPage() {
   const baseURL = 'https://pokeapi.co/api/v2/';
 
   const [pageLimit, setPageLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [pokemon, setPokemon] = useState('');
-  const [response, setResponse] = useState('');
   const [pokemonList, setPokemonList] = useState([]);
+  const [displayList, setDisplayList] = useState([]);
+  const [displayer, setDisplayer] = useState([]);
+  useEffect((() => {
+    fetchDetails();
+  }), []);
 
   useEffect(() => {
-    console.log('use effect called........')
-    setPokemonList(searchPokemons({ limit: pageLimit, offset: offset }))
+    fetchDetails();
   }, [pageLimit, offset])
 
   useEffect(() => {
-    console.log(pokemonList);
-  }, [pokemonList])
+    if (pokemonList.data) {
+      const array = pokemonList.data.results;
+      setDisplayList([]);
+      console.log(array);
+      let urlArray = [];
+      { array.map((ab) => (urlArray.push(ab.url))) }
+      setDisplayList(urlArray);
+    } else {
+      console.log('no element found')
+    }
+  }, [pokemonList]);
 
-  const loadMore = () => { }
+  useEffect(() => {
+    displayListFetcher();
+  }, [displayList])
+
   const PageLimit = (event) => {
     const value = event.target.value || 10;
     setPageLimit(value);
     console.log()
+  }
+
+  const fetchDetails = async () => {
+    setPokemonList(await searchPokemons({ limit: pageLimit, offset: offset }))
+  }
+
+  const displayListFetcher = async () => {
+    setDisplayer([]);
+    let resp = [];
+    for (let i = 0; i < displayList.length; i++) {
+      const response = await searchPokemon({ link: displayList[i] });
+      resp.push(response);
+    }
+    setDisplayer(resp);
+    console.log(displayer)
+  }
+
+  function ListingCard() {
+    return (
+      <>
+        {displayer.map((props) => (<><div className='pokemon-card'>
+          <div className="image">
+            <img className='list-page-image' src={props.image_url} alt="" />
+          </div>
+          <div className="details">
+            <div className="basic-details">
+              <p><strong>Name : </strong>{props.name}</p>
+              <p><strong>Height : </strong>{props.height}</p>
+              <p><strong>Weight : </strong>{props.weight}</p>
+            </div>
+            <div className='ability-listing-page'>
+              {props.ability.map((ab) => (<div className='ability'>{ab.ability.name}</div>))}
+            </div>
+          </div>
+        </div></>))}
+
+      </>
+
+    );
+  }
+
+
+  function Header() {
+    return (
+      <h1>Welcome to Pokemon Application</h1>
+    )
   }
   function SearchBar() {
     return (
@@ -47,27 +108,6 @@ function ListingPage() {
       </div>
     );
   }
-
-  function ListingCard({ name, height, weight, ability, url }) {
-    return (
-      <div className='pokemon-card'>
-        <div className="image">
-          <img src={url} alt="" />
-        </div>
-        <div className="details">
-          <div className="basic-details">
-            <p>Name : {name}</p>
-            <p>Height : {height}</p>
-            <p>Weight : {weight}</p>
-          </div>
-          <div className="ability">
-            <p>ability: {ability}</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   function LoadMore() {
     return (
       <div >
@@ -92,7 +132,8 @@ function ListingPage() {
           if (offset > pageLimit) {
             setOffset(offset - pageLimit)
           } else {
-            console.log('offset cannot be changed')
+            setOffset(0);
+            console.error('offset cannot be changed')
           }
         }}>
           <button className="offset-btn" type="submit">Prev</button>
@@ -100,34 +141,15 @@ function ListingPage() {
       </div>
     )
   }
-  function Header() {
-    return (
-      <h1>Welcome to Pokemon Application</h1>
-    )
-  }
+
   return (
     <>
       <Header />
       <SearchBar />
       <div className='listing-table'>
-      
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
-        <ListingCard name='bulbasur' height='7' weight='69' ability={['overgrow', 'runaway']} url='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg' />
+        <ListingCard />
       </div>
       <div className='listing-page-btn'>
-
         <LoadMore />
         <Prev />
       </div>

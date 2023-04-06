@@ -92,7 +92,8 @@
   gap : 10px;
 }
 .ability{
-  background-color: bisque;
+  background-color:rgb(58, 176, 158);
+  color: white;
   padding : 10px
 }
 li{
@@ -108,4 +109,14 @@ h2 {
   background: whitesmoke;
   color: black;
   padding: 10px;
+}
+
+.list-page-image{
+  height: 200px;
+  width: 200px;
+}
+.ability-listing-page{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
