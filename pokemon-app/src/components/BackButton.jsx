@@ -2,7 +2,7 @@ import React from "react"
 function BackButton() {
   return (
     <>
-      <button type="submit">Back</button>
+      <button className="backbutton" type="submit">Back</button>
     </>
   )
 }

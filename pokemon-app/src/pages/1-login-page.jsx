@@ -5,7 +5,9 @@ import LoginForm from '../components/LoginForm'
 
 function LoginPage() {
   return (
-    <LoginForm />
+    <div className='form'>
+      <LoginForm />
+    </div>
   )
 }
 

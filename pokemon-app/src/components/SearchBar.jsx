@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from 'react'
-function SearchBar({PageLimit}) {
+function SearchBar({ PageLimit }) {
   const [pokemon, setPokemon] = useState('');
   return (
     <div className='search-bar'>
@@ -9,7 +9,6 @@ function SearchBar({PageLimit}) {
           className='search-box'
           type="text"
           required
-          autoFocus="autoFocus"
           value={pokemon}
           onChange={(e) => setPokemon(e.target.value)}
         />

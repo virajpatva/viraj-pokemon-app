@@ -47,7 +47,7 @@ function RegisterForm() {
       render={renderProps => {
         const { handleSubmit } = renderProps;
         return (
-          <form onSubmit={handleSubmit}>
+          <form className="basicform" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email">Email  : </label>
               <Field name="email" component="input" type="email" placeholder="abc@gmail.com" />

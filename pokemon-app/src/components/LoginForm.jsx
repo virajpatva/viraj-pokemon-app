@@ -30,7 +30,7 @@ function LoginForm() {
       render={renderProps => {
         const { handleSubmit } = renderProps;
         return (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className='basicform'>
             <div>
               <label htmlFor="email">Email  : </label>
               <Field name="email" component="input" type="email" placeholder="abc@gmail.com" />
@@ -40,7 +40,7 @@ function LoginForm() {
               <Field name="password" component="input" type="password" placeholder="pas***ord" />
             </div>
             <div>
-              <button type='submit'>Send</button>
+              <button type='submit'>Login</button>
             </div>
           </form>
         )

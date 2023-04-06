@@ -120,3 +120,44 @@ h2 {
   flex-direction: column;
   gap: 10px;
 }
+
+input[type=text],
+input[type=password],
+input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin: 10px ;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: rgb(58, 176, 158);
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin: 10px;
+}
+select{
+  margin: 10px;
+}
+
+/* Add a hover effect for buttons */
+ button:hover {
+  opacity: 0.8;
+}
+
+.form{
+  margin-top: 20px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.backbutton{
+  width: 100px;
+}

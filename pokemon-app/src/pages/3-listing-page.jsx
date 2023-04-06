@@ -10,9 +10,7 @@ function ListingPage() {
   const [pokemonList, setPokemonList] = useState([]);
   const [displayList, setDisplayList] = useState([]);
   const [displayer, setDisplayer] = useState([]);
-  useEffect((() => {
-    fetchDetails();
-  }), []);
+
   useEffect(() => {
     fetchDetails();
   }, [pageLimit, offset])
