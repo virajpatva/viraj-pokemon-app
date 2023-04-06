@@ -86,7 +86,9 @@ function ListingPage() {
       <h1>Welcome to Pokemon Application</h1>
     )
   }
+  
   function SearchBar() {
+    console.log("called");
     return (
       <div className='search-bar'>
         <form onSubmit={(e) => { search(e) }} className='form'>
@@ -108,6 +110,7 @@ function ListingPage() {
       </div>
     );
   }
+  
   function LoadMore() {
     return (
       <div >
@@ -121,9 +124,9 @@ function ListingPage() {
         </form>
 
       </div>
-
     )
   }
+  
   function Prev() {
     return (
       <div >

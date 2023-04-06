@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div>
-      <DetailsPage id={10} />
+      <LoginPage />
     </div>
   )
 }
