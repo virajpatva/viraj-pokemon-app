@@ -12,14 +12,7 @@ function DetailsPage({ id }) {
     const response = await searchPokemonDetails({ id });
     setDetails(response)
   }
-  function Header({ name }) {
-    return (
-      <>
-        <h1>Welcome to Pokemon Application {name}</h1>
-        <h2>Pokemon Details {name}</h2>
-      </>
-    )
-  }
+
   function BackButton() {
     return (
       <>
@@ -56,7 +49,6 @@ function DetailsPage({ id }) {
   }
   return (
     <>
-      <Header />
       <BackButton />
       <Pokemon details={details} />
     </>

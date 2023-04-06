@@ -27,6 +27,7 @@ export const searchPokemon = async ({ link }) => {
   const response = await axios.get(link);
   const id = response.data.id
   const finalResponse = {
+    id: id,
     name: response.data.name,
     base_experience: response.data.base_experience,
     height: response.data.height,
