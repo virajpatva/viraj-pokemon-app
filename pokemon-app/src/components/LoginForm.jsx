@@ -13,7 +13,7 @@ function LoginForm() {
         const errors = {}
         const minPassLength = 4;
         if (!values.email) {
-          errors.username = 'Required'
+          errors.email = 'Required'
         }
         if (!values.password) {
           errors.password = 'Required'
