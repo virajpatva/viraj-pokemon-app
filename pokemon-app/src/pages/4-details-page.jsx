@@ -4,8 +4,13 @@ import ReactDOM from 'react-dom/client'
 import { searchPokemonDetails } from '../Utility/API'
 import BackButton from '../components/BackButton'
 import Pokemon from '../components/PokemonDisplayer'
+import {
+  useParams,
+} from "react-router-dom";
 Pokemon
-function DetailsPage({ id }) {
+function DetailsPage() {
+  const params = useParams();
+  const id = params.id;
   const [details, setDetails] = useState((searchPokemonDetails({ id })));
   useEffect((() => {
     fetchDetails();

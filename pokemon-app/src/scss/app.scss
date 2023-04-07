@@ -176,6 +176,11 @@ select {
   border-radius: 5px;
   margin: auto;
   margin-bottom: 10px;
+  .pokemon-card-image {
+    height: 300px;
+    width: 300px;
+  }
+
   .details {
     display: flex;
     flex-direction: column;

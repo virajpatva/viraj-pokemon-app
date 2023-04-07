@@ -27,7 +27,7 @@ function Buttons({ offset, setOffset, pageLimit }) {
             setOffset(Number(offset) + Number(pageLimit))
           }}
         >
-          <button className="offset-btn" type=" submit">Load More</button>
+          <button className="offset-btn" type=" submit">Next</button>
         </form>
 
       </div>

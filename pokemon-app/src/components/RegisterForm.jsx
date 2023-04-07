@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Field } from 'react-final-form'
+import { useNavigate } from 'react-router-dom';
 const onSubmit = (e) => {
   e.preventDeafault;
   console.log('onSubmit Called');
 }
 
 function RegisterForm() {
+  const [registered, setRegistered] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (registered) {
+      navigate('/login')
+    }
+  }, [registered]);
   return (<>
     <Form
       onSubmit={(values) => {
@@ -23,6 +31,7 @@ function RegisterForm() {
           console.log(logins);
           localStorage.setItem('login', JSON.stringify(logins));
           console.log('registered');
+          setRegistered(true);
         }
       }}
       validate={values => {
