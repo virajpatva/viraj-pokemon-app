@@ -129,3 +129,21 @@ select {
     }
   }
 }
+.listing-page-btn {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin-bottom: 40px;
+  button {
+    background-color: rgb(58, 176, 158);
+    color: white;
+    padding: 7px 10px;
+    border: 1px solid rgb(56, 169, 152);
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin: 10px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
