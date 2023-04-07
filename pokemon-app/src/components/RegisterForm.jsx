@@ -8,15 +8,36 @@ const onSubmit = (e) => {
 function RegisterForm() {
   return (<>
     <Form
-      onSubmit={(values) => { console.log('registerd in successfully') }}
+      onSubmit={(values) => {
+        let logins;
+        if (localStorage.getItem('login') === null) {
+          logins = []
+        } else {
+          logins = JSON.parse(localStorage.getItem('login'));
+        }
+
+        console.log(logins.some(details => details.email === values.email))
+        let newLogin = { email: values.email, password: values.password }
+        if (logins.some(details => details.email === values.email)) {
+          console.error('similar user already exists');
+        } else {
+          logins.push(newLogin);
+          console.log(logins);
+          localStorage.setItem('login', JSON.stringify(logins));
+          console.log('registered');
+        }
+      }}
       validate={values => {
         const errors = {}
         const minPassLength = 4;
+        const maxPassLength = 15;
+        const minEmailLength = 5;
+        const maxEmailLength = 100;
         if (!values.email) {
           errors.email = 'Required'
         } else {
           const emailLength = values.email.length;
-          if (emailLength < 5 || emailLength > 100) {
+          if (emailLength < minEmailLength || emailLength > maxEmailLength) {
             errors.email = 'Email of invalid length'
           }
         }
@@ -26,7 +47,7 @@ function RegisterForm() {
           const passwordLength = values.password.length;
           const digitsRegExp = /(?=.*?[0-9])/;
           const digitsPassword = digitsRegExp.test(values.password);
-          if (passwordLength <= 4 || passwordLength >= 15) {
+          if (passwordLength <= minPassLength || passwordLength >= maxPassLength) {
             errors.password = 'Password of invalid length'
           } else {
             if (!digitsPassword) {
@@ -41,7 +62,6 @@ function RegisterForm() {
             errors.confpassword = "password did not match"
           }
         }
-        console.log(errors);
         return errors
       }}
       render={renderProps => {

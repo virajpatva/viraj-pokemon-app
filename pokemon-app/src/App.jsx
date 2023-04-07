@@ -12,9 +12,7 @@ function App() {
     <div>
       <Header />
       <RegisterPage />
-      <LoginPage />
-      <ListingPage />
-      <DetailsPage id={1} />
+
     </div>
   )
 }
