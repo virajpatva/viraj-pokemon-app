@@ -4,8 +4,8 @@ function Pokemon({ details }) {
   return (
     <>
       <div className='pokemon-details'>
-        <div className="image">
-          <img src={details.image_url} alt="" className='image-details' />
+        <div >
+          <img className='pokemon-card-image' src={details.image_url} alt="" />
         </div>
         <div className="details">
           <div className="basic-details">
