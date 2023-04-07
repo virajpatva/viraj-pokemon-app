@@ -8,3 +8,45 @@
   background: rgb(58, 176, 158);
   color: white;
 }
+.form {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  .basicform {
+    .form-controller {
+      display: flex;
+      flex-direction: column;
+      width: 600px;
+      padding: 10px;
+      gap: 10px;
+      input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        width: 100%;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 14px;
+      }
+      label {
+        font-weight: bold;
+      }
+      /* Set a style for all buttons */
+      button {
+        background-color: rgb(58, 176, 158);
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 5px;
+      }
+      button:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
