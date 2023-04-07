@@ -5,14 +5,13 @@ import RegisterPage from './pages/2-register-page'
 import ListingPage from './pages/3-listing-page'
 import DetailsPage from './pages/4-details-page'
 import Header from './components/Header'
-import './App.css'
+import '../dist/css/app.css'
 function App() {
 
   return (
     <div>
       <Header />
-      <RegisterPage />
-
+      <DetailsPage id={1} />
     </div>
   )
 }

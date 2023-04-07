@@ -20,7 +20,7 @@ function LoginForm() {
         } else {
           const passwordLength = values.password.length;
 
-          if (passwordLength <= 4) {
+          if (passwordLength <= minPassLength) {
             errors.password = 'Too short password'
           }
         }
@@ -31,15 +31,15 @@ function LoginForm() {
         const { handleSubmit } = renderProps;
         return (
           <form onSubmit={handleSubmit} className='basicform'>
-            <div>
+            <div className='form-controller'>
               <label htmlFor="email">Email  : </label>
               <Field name="email" component="input" type="email" placeholder="abc@gmail.com" />
             </div>
-            <div>
+            <div className='form-controller'>
               <label htmlFor="password">Password  : </label>
               <Field name="password" component="input" type="password" placeholder="pas***ord" />
             </div>
-            <div>
+            <div className='form-controller'>
               <button type='submit'>Login</button>
             </div>
           </form>

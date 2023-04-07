@@ -68,19 +68,21 @@ function RegisterForm() {
         const { handleSubmit } = renderProps;
         return (
           <form className="basicform" onSubmit={handleSubmit}>
-            <div>
+            <div className='form-controller'>
               <label htmlFor="email">Email  : </label>
               <Field name="email" component="input" type="email" placeholder="abc@gmail.com" />
             </div>
-            <div>
+            <div className='form-controller'>
               <label htmlFor="password">Password  : </label>
               <Field name="password" component="input" type="password" placeholder="pas***ord" />
             </div>
-            <div>
-              <label htmlFor="confpassword">Conf Password  : </label>
+            <div className='form-controller'>
+              <label htmlFor="confpassword">Confirm Password  : </label>
               <Field name="confpassword" component="input" type="password" placeholder="pas***ord" />
             </div>
-            <button type="submit">Register</button>
+            <div className='form-controller'>
+              <button type="submit">Register</button>
+            </div>
           </form>
         )
       }}
