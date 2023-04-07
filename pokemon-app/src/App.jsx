@@ -11,9 +11,6 @@ function App() {
   return (
     <div>
       <Header />
-      <br />
-      <ListingPage />
-      <br />
       <DetailsPage id={1} />
     </div>
   )
