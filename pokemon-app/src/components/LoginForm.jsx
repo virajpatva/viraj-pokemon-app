@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Field } from 'react-final-form'
-const onSubmit = (e) => {
-  e.preventDeafault;
-  console.log('onSubmit Called');
-}
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
+  const [loggedIn, setLoggedIn] = useState(false)
+  const navigate = useNavigate();
+  useEffect(() => {
+    let login = localStorage.getItem('loggedIn');
+    if (login) {
+      navigate('/');
+    }
+  }, [loggedIn]);
   return (<>
     <Form
       onSubmit={(values) => {
         let loginDetails = JSON.parse(localStorage.getItem('login'));
         if (loginDetails.some(details => details.email === values.email && details.password === values.password)) {
-          console.log('login successful')
+          localStorage.setItem('loggedIn', true);
+          setLoggedIn(true);
         } else {
           console.log('invalid login');
         }
