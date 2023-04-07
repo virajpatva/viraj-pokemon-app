@@ -8,7 +8,14 @@ const onSubmit = (e) => {
 function LoginForm() {
   return (<>
     <Form
-      onSubmit={(values) => { console.log('logged in successfully') }}
+      onSubmit={(values) => {
+        let loginDetails = JSON.parse(localStorage.getItem('login'));
+        if (loginDetails.some(details => details.email === values.email && details.password === values.password)) {
+          console.log('login successful')
+        } else {
+          console.log('invalid login');
+        }
+      }}
       validate={values => {
         const errors = {}
         const minPassLength = 4;

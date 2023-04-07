@@ -11,7 +11,8 @@ function App() {
   return (
     <div>
       <Header />
-      <DetailsPage id={1} />
+      {/* <RegisterPage /> */}
+      <LoginPage />
     </div>
   )
 }

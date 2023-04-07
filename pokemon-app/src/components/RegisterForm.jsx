@@ -15,8 +15,6 @@ function RegisterForm() {
         } else {
           logins = JSON.parse(localStorage.getItem('login'));
         }
-
-        console.log(logins.some(details => details.email === values.email))
         let newLogin = { email: values.email, password: values.password }
         if (logins.some(details => details.email === values.email)) {
           console.error('similar user already exists');
