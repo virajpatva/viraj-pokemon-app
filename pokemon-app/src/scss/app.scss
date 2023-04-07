@@ -93,3 +93,39 @@ select {
     }
   }
 }
+.listing-table {
+  padding: 10px;
+  margin: 10px;
+  margin: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  align-content: space-between;
+  .pokemon-card {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 30px;
+    border: 1px solid black;
+    &-image {
+      height: 200px;
+      width: 200px;
+    }
+    &-details {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      justify-content: flex-start;
+      &-ability {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .ability {
+          background-color: rgb(58, 176, 158);
+          color: white;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
