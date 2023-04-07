@@ -2,7 +2,12 @@
   margin: 0;
   padding: 0;
 }
-
+input,
+select {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
 .header {
   padding: 10px;
   background: rgb(58, 176, 158);
@@ -46,6 +51,44 @@
       }
       button:hover {
         opacity: 0.8;
+      }
+    }
+  }
+}
+.search-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0px 10px;
+  &-form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: end;
+    &-controller {
+      &-searchbox {
+        width: 300px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        background-color: #fefdf0;
+        vertical-align: top;
+        height: 30px;
+        padding: 3px 10px;
+      }
+      &-button {
+        padding: 3px 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        background-color: #fefdf0;
+        vertical-align: top;
+        height: 30px;
+      }
+      &-dropdown {
+        padding: 3px 10px;
+        border-radius: 3px;
+        background-color: #fefdf0;
+        border: 1px solid #ccc;
+        vertical-align: top;
+        height: 30px;
       }
     }
   }

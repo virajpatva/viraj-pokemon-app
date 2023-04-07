@@ -12,10 +12,6 @@ function App() {
     <div>
       <Header />
       <br />
-      <RegisterPage />
-      <br />
-      <LoginPage />
-      <br />
       <ListingPage />
       <br />
       <DetailsPage id={1} />
