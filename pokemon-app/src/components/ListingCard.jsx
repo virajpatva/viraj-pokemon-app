@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 function ListingCard({ displayer }) {
+  const [nav, setNav] = useState('/');
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate(nav);
+  }, [nav])
   return (
     <>
-      {displayer.map((props) => (<div key={props.id} className='pokemon-card'>
+      {displayer.map((props) => (<div key={props.id} className='pokemon-card' onClick={() => setNav(`/listpokemon/${props.id}`)}>
         <div>
           <img className='pokemon-card-image' src={props.image_url} alt="" />
         </div>
