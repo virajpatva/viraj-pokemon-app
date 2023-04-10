@@ -50,7 +50,7 @@ function ListingPage() {
 
   return (
     <>
-      <SearchBar PageLimit={PageLimit} />
+      <SearchBar PageLimit={PageLimit} displayer={displayer} setDisplayer={setDisplayer} />
       <div className='listing-table'>
         <ListingCard displayer={displayer} />
       </div>
